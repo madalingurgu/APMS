@@ -1,6 +1,24 @@
 import os
 import sys
 
+#json load file
+
+import json
+from django.core.exceptions import  ImproperlyConfigured
+
+with open("secrets.json") as f:
+    secrets = json.loads(f.read())
+
+def get_secret(setting, secrets=secrets):
+#Get the secret var or return explicit exception.
+    try:
+        return secrets[setting]
+    except KeyError:
+        error_msg = "Set the {0} enviroment variable".format(setting)
+        raise ImproperlyConfigured(error_msg)
+#end of load file
+
+
 # PATH vars
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -10,13 +28,13 @@ sys.path.insert(0, root('apps'))
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ato12lomicona&(s-_e6k2ed_7-!6o$j)o11p_zalw34=gtza+ybov%*o4z@%v#blonableblona'
+SECRET_KEY = get_secret("SECRET_KEYT")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 IN_TESTING = sys.argv[1:2] == ['test']
 
-ALLOWED_HOSTS = ["secret here"]
+ALLOWED_HOSTS = ["52be8940c1d1412791238c8e73ed436d.vfs.cloud9.eu-west-1.amazonaws.com"]
 
 # Application definition
 
