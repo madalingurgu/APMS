@@ -16,7 +16,7 @@ SECRET_KEY = 'ato12lomicona&(s-_e6k2ed_7-!6o$j)o11p_zalw34=gtza+ybov%*o4z@%v#blo
 DEBUG = True
 IN_TESTING = sys.argv[1:2] == ['test']
 
-ALLOWED_HOSTS = ["52be8940c1d1412791238c8e73ed436d.vfs.cloud9.eu-west-1.amazonaws.com"]
+ALLOWED_HOSTS = ["secret here"]
 
 # Application definition
 
