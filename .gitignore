@@ -55,7 +55,6 @@ venv
 *.iml
 *.iws
 
-APMS/settings/local.py
 APMS/settings/production.py
 
 # collect static output directory
