@@ -1,23 +1,6 @@
 import os
 import sys
 
-#json load file
-import json
-
-from django.core.exceptions import  ImproperlyConfigured
-
-with open("secr_key.json") as f:
-    secrets = json.loads(f.read())
-
-def get_secret(setting, secrets=secrets):
-#Get the secret var or return explicit exception.
-    try:
-        return secrets[setting]
-    except KeyError:
-        error_msg = "Set the {0} enviroment variable".format(setting)
-        raise ImproperlyConfigured(error_msg)
-#end of load file
-
 
 # PATH vars
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,13 +10,13 @@ sys.path.insert(0, root('apps'))
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = get_secret("SECRET_KEY")
+SECRET_KEY = 'test key'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 IN_TESTING = sys.argv[1:2] == ['test']
 
-ALLOWED_HOSTS = [get_secret("ALLOWED_HOSTS")]
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 INSTALLED_APPS = [
@@ -67,11 +50,11 @@ WSGI_APPLICATION = 'APMS.wsgi.application'
 # Database
 DATABASES = {
     'default': {
-        'ENGINE': 'DB_ENGINE',
-        'NAME': 'DB_NAME',
-        'USER': 'DB_USER',
-        'PASSWORD': 'DB_PASSWORD',
-        'HOST': 'DB_HOST',
+        'ENGINE': '',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
         'PORT': '',  # Set to empty string for default.
     }
 }
