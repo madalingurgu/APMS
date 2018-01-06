@@ -2,11 +2,11 @@ import os
 import sys
 
 #json load file
-
 import json
+
 from django.core.exceptions import  ImproperlyConfigured
 
-with open("secrets.json") as f:
+with open("secr_key.json") as f:
     secrets = json.loads(f.read())
 
 def get_secret(setting, secrets=secrets):
@@ -20,7 +20,6 @@ def get_secret(setting, secrets=secrets):
 
 
 # PATH vars
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 root = lambda *x: os.path.join(BASE_DIR, *x)
 
@@ -28,16 +27,15 @@ sys.path.insert(0, root('apps'))
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = get_secret("SECRET_KEYT")
+SECRET_KEY = get_secret("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 IN_TESTING = sys.argv[1:2] == ['test']
 
-ALLOWED_HOSTS = ["52be8940c1d1412791238c8e73ed436d.vfs.cloud9.eu-west-1.amazonaws.com"]
+ALLOWED_HOSTS = [get_secret("ALLOWED_HOSTS")]
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -51,13 +49,12 @@ PROJECT_APPS = []
 
 INSTALLED_APPS += PROJECT_APPS
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -68,25 +65,23 @@ ROOT_URLCONF = 'APMS.urls'
 WSGI_APPLICATION = 'APMS.wsgi.application'
 
 # Database
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'APMS',
-        'USER': 'postgres',
-        'PASSWORD': '',
-        'HOST': '',  # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'ENGINE': 'DB_ENGINE',
+        'NAME': 'DB_NAME',
+        'USER': 'DB_USER',
+        'PASSWORD': 'DB_PASSWORD',
+        'HOST': 'DB_HOST',
         'PORT': '',  # Set to empty string for default.
     }
 }
 
 # Internationalization
+LANGUAGE_CODE = 'en-us'
 
-LANGUAGE_CODE = 'en-gb'
+TIME_ZONE = 'Europe/Bucharest'
 
-TIME_ZONE = 'UTC'
-
-USE_I18N = False
+USE_I18N = True
 
 USE_L10N = True
 
@@ -94,12 +89,9 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-
 STATIC_URL = '/static/'
 
-
 # Additional locations of static files
-
 STATICFILES_DIRS = (
     root('assets'),
 )
@@ -127,7 +119,6 @@ TEMPLATES = [
 ]
 
 # Password validation
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
