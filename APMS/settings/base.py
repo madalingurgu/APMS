@@ -41,10 +41,14 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles'
+    'django.contrib.staticfiles',
+    'registration',
+    'django_tables2',
 ]
 
-PROJECT_APPS = []
+PROJECT_APPS = [
+    'orders',
+]
 
 INSTALLED_APPS += PROJECT_APPS
 
@@ -111,6 +115,7 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'django.template.context_processors.static',
                 'django.template.context_processors.tz',
+                'django.template.context_processors.request', #added for django-tables2
                 'django.contrib.messages.context_processors.messages',
             ],
         },
@@ -132,6 +137,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+LOGIN_REDIRECT_URL = "home"
 
 
 # .local.py overrides all the common settings.
