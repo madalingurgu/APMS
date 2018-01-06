@@ -1,6 +1,9 @@
 from django.contrib import admin
 from orders.models import Order
 
-# Register your models here.
+class OrderAdmin(admin.ModelAdmin):
+    model = Order
+    list_display = ('order_number', 'customer',)
 
-admin.site.register(Order)
+# Register your models here.
+admin.site.register(Order, OrderAdmin)

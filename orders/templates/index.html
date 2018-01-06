@@ -4,12 +4,29 @@
 {% endblock title %}
 
 {% block content %}
-    <h1>Test index</h1>
-    {% for orders in order_items %}
-    <h2>
-        <li>
-            <p>{{ orders.order_number }}</p>
-        </li>
-    </h2>
+<h2>Orders table</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Order number</th>
+      <th scope="col">Customer</th>
+      <th scope="col">Drawing number</th>
+    </tr>
+  </thead>
+  <tbody>
+      
+    {% for thing in orders %}     
+    <tr>
+      <th scope="row">{{ thing.id }}</th>
+      <td>{{ thing.order_number }}</td>
+      <td>{{ thing.customer }}</td>
+      <td>{{ thing.drawing_number }}</td>
+    </tr>
     {% endfor %}
+
+  </tbody>
+</table>
+
 {% endblock content %}

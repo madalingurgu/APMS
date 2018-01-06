@@ -5,7 +5,11 @@ from orders.models import Order
 
 def index(request):
 
-    orders_items = Order.objects.all
+    orders = Order.objects.all
+    test = 6
 
     # this is your new view and passing variable
-    return render(request, 'index.html', {'orders_items': orders_items})
+    return render(request, 'index.html', {
+        'orders': orders, 
+        'test': test,
+        })
