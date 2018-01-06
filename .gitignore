@@ -69,3 +69,6 @@ node_modules/
 # bower packages
 APMS/assets-src/vendor/
 .sass-cache/
+
+APMS/secr_key.json
+APMS/APMS.db
