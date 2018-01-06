@@ -1,0 +1,10 @@
+{	
+	"FILENAME" : "secr_key.json",
+	"SECRET_KEY" : "asoplerecsy_0!tskq@*o9vwh0y1357nime)_4m9=7hlv5hy8#tsp@f*i(((dorpethed4",
+	"ALLOWED_HOSTS" : "sgtest.pythonanywhere.com",
+	"DB_ENGINE" : "django.db.backends.mysql",
+	"DB_NAME" : "SGTEST$example",
+	"DB_USER" : "SGTEST",
+	"DB_PASSWORD" : "Sebastian1234",
+	"DB_HOST" : "SGTEST.mysql.pythonanywhere-services.com"
+}
