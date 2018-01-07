@@ -6,10 +6,12 @@ from orders.models import Order
 def index(request):
 
     orders = Order.objects.all
-    test = 6
+    tr_class_succes = "table-success"
+    tr_class_default = "table-info"
 
     # this is your new view and passing variable
     return render(request, 'index.html', {
         'orders': orders, 
-        'test': test,
+        'tr_class_succes': tr_class_succes,
+        'tr_class_default': tr_class_default,
         })

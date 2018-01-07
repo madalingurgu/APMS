@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% block title %}
     Homepage - {{ block.super }}
 {% endblock title %}
@@ -6,8 +7,14 @@
 {% block content %}
 <h2>Orders table</h2>
 
-<table>
-  <thead>
+
+<button type="button" class="btn btn-primary">
+  New <span class="badge badge-dark">5</span>
+</button>
+
+<div class="table-responsive">
+<table class="table table-hover table-sm">
+  <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
       <th scope="col">Order number</th>
@@ -18,7 +25,9 @@
   <tbody>
       
     {% for thing in orders %}     
-    <tr>
+     {% if thing.id == 1 %}
+    <tr class="{{ tr_class_succes }}">
+        {% endif %}
       <th scope="row">{{ thing.id }}</th>
       <td>{{ thing.order_number }}</td>
       <td>{{ thing.customer }}</td>
@@ -28,5 +37,5 @@
 
   </tbody>
 </table>
-
+</div>
 {% endblock content %}
