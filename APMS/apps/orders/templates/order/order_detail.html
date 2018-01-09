@@ -7,8 +7,9 @@
 {% block content %}
 
 <div class="container">
-  <h1>{{ thing.order_number }}</h1>
-  <p>{{ thing.customer }}</p>
-  <p>{{ thing.drawing_number }}</p>
+  <h2>{{ thing.order_number }}</h2>
+  <p>Customer name : {{ thing.customer_name }}</p>
+  <p>Drawing number: {{ thing.drawing_number }}</p>
+  <p>Date posted: {{ thing.post_date }}</p>
 </div>
 {% endblock content %}

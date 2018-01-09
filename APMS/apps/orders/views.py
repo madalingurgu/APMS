@@ -19,7 +19,6 @@ def index(request):
         
 def order_detail(request, slug):
     thing = Order.objects.get(slug=slug)
-    
-    
+
     return render(request, 'order/order_detail.html',
         {'thing': thing, })

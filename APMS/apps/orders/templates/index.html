@@ -5,12 +5,7 @@
 {% endblock title %}
 
 {% block content %}
-<h2>Orders table</h2>
 
-
-<button type="button" class="btn btn-primary">
-  New <span class="badge badge-dark">5</span>
-</button>
 
 <div class="table-responsive">
 <table class="table table-hover table-sm">
@@ -25,11 +20,11 @@
   <tbody>
       
     {% for order in orders %}     
-     {% if order.id == 3 %}
+     {% if order.id == 0 %}
     <tr class="{{ tr_class_succes }}">
         {% endif %}
       <th scope="row">{{ order.id }}</th>
-      <td><a href="{% url 'order_detail' slug=order.slug %}">
+      <td><a class="btn btn-outline-secondary btn-md" role="button" href="{% url 'order_detail' slug=order.slug %}">
         {{ order.order_number }}</td>
       <td>{{ order.customer_name }}</td>
       <td>{{ order.drawing_number }}</td>
