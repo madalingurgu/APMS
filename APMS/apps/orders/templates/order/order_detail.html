@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+    {{ order.order_number }} - {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+  <h1>{{ order.order_number }}</h1>
+  <p>{{ order.customer }}</p>
+  <p>{{ order.drawing_number }}</p>
+</div>
+{% endblock content %}
