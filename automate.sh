@@ -17,13 +17,19 @@ alias cd.='cd ..'
 alias cd-='cd -'
 #.bashrc reload this file
 alias bs='source ~/.bashrc'
+#python manage.py
+alias manage='python3 manage.py'
 
 ##functions
-
-#django manage.py from everywhere
-manage() {
+migrate() {
     cd ~/environment/apms
-    python3 manage.py
+    python3 manage.py migrate
+}
+
+#django manage.py shell
+shell() {
+    cd ~/environment/apms
+    python3 manage.py shell
 }
 
 #django manage.py runserver from everywhere

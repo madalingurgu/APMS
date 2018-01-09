@@ -24,15 +24,15 @@
   </thead>
   <tbody>
       
-    {% for thing in orders %}     
-     {% if thing.id == 3 %}
+    {% for order in orders %}     
+     {% if order.id == 3 %}
     <tr class="{{ tr_class_succes }}">
         {% endif %}
-      <th scope="row">{{ thing.id }}</th>
-      <td><a href="{% url 'order_detail' name=thing.order_number %}">
-        {{ thing.order_number }}</td>
-      <td>{{ thing.customer }}</td>
-      <td>{{ thing.drawing_number }}</td>
+      <th scope="row">{{ order.id }}</th>
+      <td><a href="{% url 'order_detail' slug=order.slug %}">
+        {{ order.order_number }}</td>
+      <td>{{ order.customer_name }}</td>
+      <td>{{ order.drawing_number }}</td>
     </tr>
     {% endfor %}
 

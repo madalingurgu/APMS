@@ -6,7 +6,7 @@ from django.urls import reverse
 
 def index(request):
 
-    orders = Order.objects.all
+    orders = Order.objects.all()
     tr_class_succes = "table-success"
     tr_class_default = "table-info"
 
@@ -17,8 +17,9 @@ def index(request):
         'tr_class_default': tr_class_default,
         })
         
-def order_detail(request, order_number):
-    order = Order.objects.get(order_number=order_number)
+def order_detail(request, slug):
+    thing = Order.objects.get(slug=slug)
     
     
-    return render(request, 'order/order_detail.html', {'order': order, })
+    return render(request, 'order/order_detail.html',
+        {'thing': thing, })
