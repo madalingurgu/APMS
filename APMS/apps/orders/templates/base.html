@@ -2,44 +2,57 @@
 <!doctype html>
 <html lang="en">
 <head>
-    
         <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
-    
-
-    <link rel="stylesheet" href="{% static 'orders/css/style.css' %}" />
-    
-    <title>
-         {% block title %}orders app{% endblock title %}
+        <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" 
+        integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
+        crossorigin="anonymous">
+        <!-- Load static CSS -->
+    <link rel="stylesheet" href="{% static 'css/orders.css' %}" />
+    <title>  
+        {% block title %}
+           Orders management
+        {% endblock title %}
     </title>
     
-    {% block header %}{% endblock header %}
+    
 </head>
 <body>
-    <div class="container-fluid">
-    
+<div class="container-fluid">
     <header>
-  
-        
-            <a class="btn btn-primary btn-lg" role="button" href="{% url 'home' %}" role="button">Home</a>
-            <a class="btn btn-primary btn-lg" role="button" href="{% url 'home' %}" role="button">Add</a>
-        
+        {% block header %}
+            <!-- Logo, baner, user, language, etc.. 
+        <div id="logo"></div>
+        <div id="language"></div>
+            -->
+        {% endblock header %}
     </header>
-    
-    
-        <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+    <nav>
+        {% block nav %}
+        <a class="btn btn-primary btn-lg" role="button"
+            href="{% url 'home' %}" role="button">Home</a>
+        <a class="btn btn-primary btn-lg" role="button"
+            href="{% url 'home' %}" role="button">Add</a>
+        {% endblock nav %}
+    </nav>
     
     {% block content %}{% endblock content %}
+    
     {% block footer %}{% endblock footer %}
 
-</div>    
+</div>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" 
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" 
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" 
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" 
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" 
+        integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" 
+        crossorigin="anonymous"></script>
 </body>
 </html>

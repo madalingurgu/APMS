@@ -1,18 +1,28 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block title %}
-    {{ order.order_number }} - {{ block.super }}
+    {{ thing.order_number }} - Edit
 {% endblock title %}
 
-{% block content %}
+{% block header %}
+  {{ block.super }}
+{% endblock header %}
 
+{% block nav %}
+  {{ block.super }}
+{% endblock nav %}
+
+{% block content %}
 <div class="container">
   <h2>Edit {{ thing.order_number }}</h2>
-    <form role="form" action="" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Submit</button>
-    </form>
+  <form role="form" action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+  </form>
 </div>
-
 {% endblock content %}
+
+{% block footer %}
+  {{ block.super }}
+{% endblock footer %}

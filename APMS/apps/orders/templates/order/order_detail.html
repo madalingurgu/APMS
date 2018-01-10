@@ -1,18 +1,31 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
+
 {% block title %}
-    {{ order.order_number }} - {{ block.super }}
+    {{ thing.order_number }} - Detail
 {% endblock title %}
 
-{% block content %}
+{% block header %}
+  {{ block.super }}
+{% endblock header %}
 
+{% block nav %}
+  {{ block.super }}
+{% endblock nav %}
+
+{% block content %}
 <div class="container">
   <h2>{{ thing.order_number }}</h2>
   <p>Customer name : {{ thing.customer_name }}</p>
   <p>Drawing number: {{ thing.drawing_number }}</p>
   <p>Date posted: {{ thing.post_date }}</p>
-  <a class="btn btn-outline-secondary btn-md" role="button" href="{% url 'order_edit' %}">
-  Edit  
+  <a class="btn btn-outline-secondary btn-md" role="button" 
+      href="{% url 'order_edit' %}">
+      Edit  
   </a>
 </div>
 {% endblock content %}
+
+{% block footer %}
+  {{ block.super }}
+{% endblock footer %}
