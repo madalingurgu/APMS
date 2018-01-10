@@ -24,7 +24,7 @@
     <tr class="{{ tr_class_succes }}">
         {% endif %}
       <th scope="row">{{ order.id }}</th>
-      <td><a class="btn btn-outline-secondary btn-md" role="button" href="{% url 'order_detail' slug=order.slug %}">
+      <td><a class="btn btn-outline-secondary btn-md" role="button" href="{% url 'order_detail' slugm=order.slug %}">
         {{ order.order_number }}</td>
       <td>{{ order.customer_name }}</td>
       <td>{{ order.drawing_number }}</td>

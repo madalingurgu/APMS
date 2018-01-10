@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from orders.models import Order
 
 # Create your views here.
@@ -16,15 +16,15 @@ def index(request):
         'tr_class_default': tr_class_default,
         })
         
-def order_detail(request, slug):
-    thing = Order.objects.get(slug=slug)
+def order_detail(request, slugm):
+    thing = Order.objects.get(slug=slugm)
 
     return render(request, 'order/order_detail.html',
         {'thing': thing, }
         )
         
 def order_edit(request):
-#    thing2 = Order.objects.get(slug=slug)
+#    thing2 = Order.objects.get(slug=slugm)
 
     return render(request, 'order/edit_order.html',
 #        {'thing2': thing2, }
