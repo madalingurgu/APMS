@@ -8,6 +8,9 @@ urlpatterns = [
     
     url(r'^order/(?P<slug>[-\w]+)/$',
         views.order_detail, name='order_detail'),
+        
+    url(r'^order/',
+        views.order_edit, name='order_edit'),
     
     
     

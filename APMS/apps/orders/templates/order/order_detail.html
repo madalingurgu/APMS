@@ -11,5 +11,8 @@
   <p>Customer name : {{ thing.customer_name }}</p>
   <p>Drawing number: {{ thing.drawing_number }}</p>
   <p>Date posted: {{ thing.post_date }}</p>
+  <a class="btn btn-outline-secondary btn-md" role="button" href="{% url 'order_edit' %}">
+  Edit  
+  </a>
 </div>
 {% endblock content %}

@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from orders.models import Order
-from django.urls import reverse
 
 # Create your views here.
 
@@ -21,4 +20,12 @@ def order_detail(request, slug):
     thing = Order.objects.get(slug=slug)
 
     return render(request, 'order/order_detail.html',
-        {'thing': thing, })
+        {'thing': thing, }
+        )
+        
+def order_edit(request):
+#    thing2 = Order.objects.get(slug=slug)
+
+    return render(request, 'order/edit_order.html',
+#        {'thing2': thing2, }
+        )
