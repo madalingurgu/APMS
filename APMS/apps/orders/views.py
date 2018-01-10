@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from orders.models import Order
 
 # Create your views here.
@@ -17,7 +17,8 @@ def index(request):
         })
         
 def order_detail(request, slugm):
-    thing = Order.objects.get(slug=slugm)
+    thing = get_object_or_404(Order, slug=slugm)
+#    Order.objects.get(slug=slugm)
 
     return render(request, 'order/order_detail.html',
         {'thing': thing, }

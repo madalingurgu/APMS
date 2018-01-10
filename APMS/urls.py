@@ -12,7 +12,5 @@ urlpatterns = [
     url(r'^order/',
         views.order_edit, name='order_edit'),
     
-    
-    
     url(r'^admin/', admin.site.urls),
 ]
