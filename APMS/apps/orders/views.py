@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from orders.models import Order
+from orders.forms import OrderForm
 
 # Create your views here.
 
@@ -33,8 +34,19 @@ def customer_detail(request, cust_name):
         )
 
         
-def order_edit(request):
-
-    return render(request, 'order/edit_order.html',
+def order_edit(request, slugm):
+    thing3 = Order.objects.get(slug=slugm)
+    form_class = OrderForm
     
-        )
+    if request.method == 'POST':
+        form = form_class(data=request.POST, instance=thing3)
+        if form.is_valid():
+            form.save()
+            return redirect('order_detail', slugm=thing3.slug)
+    else:
+        form = form_class(instance=thing3)
+        
+    return render(request, 'order/order_edit.html', {
+        'thing3': thing3,
+        'form': form,
+    })
