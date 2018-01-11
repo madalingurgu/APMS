@@ -30,11 +30,13 @@
         {% if order.id == 0 %}
       <tr class="{{ tr_class_succes }}">
         {% endif %}
-        <td scope="row">{{ order.id }}</td>
+        <td>{{ order.id }}</td>
         <td><a class="btn btn-outline-secondary btn-md" role="button"
           href="{% url 'order_detail' slugm=order.slug %}">
           {{ order.order_number }}</td>
-        <td>{{ order.customer_name }}</td>
+        <td><a class="btn btn-outline-secondary btn-md" role="button"
+          href="{% url 'customer_detail' cust_name=order.customer_name %}">
+          {{ order.customer_name }}</td>
         <td>{{ order.drawing_number }}</td>
       </tr>
       {% endfor %}

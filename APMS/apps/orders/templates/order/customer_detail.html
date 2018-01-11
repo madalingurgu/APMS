@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    {{ thing.order_number }} - Detail
+{% endblock title %}
+
+{% block header %}
+  {{ block.super }}
+{% endblock header %}
+
+{% block nav %}
+  {{ block.super }}
+{% endblock nav %}
+
+{% block content %}
+<div class="container">
+  <h1>Customer Name:</h1>
+  <h2>{{ thing2.customer_name }}</h2>
+  <p>Related to : {{ thing2.order_number }}</p>
+</div>
+{% endblock content %}
+
+{% block footer %}
+  {{ block.super }}
+{% endblock footer %}

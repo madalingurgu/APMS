@@ -6,8 +6,11 @@ from orders import views
 urlpatterns = [
     url(r'^$', views.index, name='home'),
     
-    url(r'^order/(?P<slugm>[-\w]+)/$',
+    url(r'^order-number/(?P<slugm>[-\w]+)/$',
         views.order_detail, name='order_detail'),
+        
+    url(r'^customer-details/(?P<cust_name>[-\w]+)/$',
+        views.customer_detail, name='customer_detail'),
         
     url(r'^order/',
         views.order_edit, name='order_edit'),
