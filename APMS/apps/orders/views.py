@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from orders.models import Order
 from orders.forms import OrderForm
+from django.template.defaultfilters import slugify
+from django.utils import timezone
 
 # Create your views here.
 
@@ -48,5 +50,24 @@ def order_edit(request, slugm):
         
     return render(request, 'order/order_edit.html', {
         'thing3': thing3,
+        'form': form,
+    })
+    
+
+def order_create(request):
+    form_class = OrderForm
+    
+    if request.method == 'POST':
+        form = form_class(request.POST)
+        if form.is_valid():
+            thing4 = form.save(commit=False)
+            thing4.slug = slugify(thing4.order_number)
+            thing4.post_date = timezone.now()
+            thing4.save()
+            return redirect('order_detail', slugm=thing4.slug)
+    else:
+        form = form_class()
+        
+    return render(request, 'order/order_create.html', {
         'form': form,
     })
