@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Homepage - {{ block.super }}
+{% endblock title %}
+
+{% block header %}
+  {{ block.super }}
+{% endblock header %}
+
+{% block nav %}
+  {{ block.super }}
+{% endblock nav %}
+
+{% block content %}
+<div class="table-responsive">
+  <h1>Orders</h1>
+  <table class="table table-hover table-sm">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Order number</th>
+        <th scope="col">Customer</th>
+        <th scope="col">Drawing number</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for order in orders %}
+        {% if order.id == 0 %}
+      <tr class="{{ tr_class_succes }}">
+        {% endif %}
+        <td>{{ order.id }}</td>
+        <td><a class="btn btn-outline-secondary btn-md" role="button"
+          href="{% url 'order_detail' slugm=order.slug %}">
+          {{ order.order_number }}</td>
+        <td><a class="btn btn-outline-secondary btn-md" role="button"
+          href="{% url 'customer_detail' cust_name=order.customer_name %}">
+          {{ order.customer_name }}</td>
+        <td>{{ order.drawing_number }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock content %}
+
+{% block footer %}
+  {{ block.super }}
+{% endblock footer %}
