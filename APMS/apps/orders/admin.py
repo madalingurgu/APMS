@@ -3,18 +3,18 @@ from orders.models import Order, Request, Sample
 
 class OrderAdmin(admin.ModelAdmin):
     model = Order
-    list_display = ('order_number', 'customer_name', 'post_date',)
+    list_display = ('order_number', 'customer_name',)
     prepopulated_fields = {'slug': ('order_number',)}
     
 class SampleAdmin(admin.ModelAdmin):
     model = Sample
     list_display = ('description',)    
 
-
 class RequestAdmin(admin.ModelAdmin):
     model = Request
-    list_display = ('order', 'sample', 'order_by',)
+    list_display = ('type_of_choice', 'order_by',)
     
+
 
 
 

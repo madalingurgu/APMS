@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from orders.models import Order
+from orders.models import Order, Request
 from orders.forms import OrderForm
 from django.template.defaultfilters import slugify
 from django.utils import timezone
@@ -9,6 +9,7 @@ from django.utils import timezone
 def index(request):
 
     orders = Order.objects.all()
+    requests = Request.objects.all()
     tr_class_succes = "table-success"
     tr_class_default = "table-info"
 
