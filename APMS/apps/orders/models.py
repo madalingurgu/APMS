@@ -6,6 +6,8 @@ from django.db import models
 TYPE_CHOICES = ( 
     ('ORDER','Order'),
     ('SAMPLE','Sample'),
+    ('ECR','Ecr'),
+    ('ERF','Erf'),
 )
 
 TYPE_STATUS = ( 
@@ -15,25 +17,28 @@ TYPE_STATUS = (
     ('HOLD','Hold'),
 )
 class Request(models.Model):
-    
-    type_of_choice = models.CharField( max_length=20,
+    project_no = models.IntegerField(primary_key=True)
+    r_type = models.CharField( max_length=20,
         choices=TYPE_CHOICES, default='ORDER')
+    description = models.CharField(max_length=255, null=True)
+    customer = models.CharField(max_length=50, null=True)
     order_by = models.CharField(max_length=50, null=True)
     post_date = models.DateTimeField('date posted')
-    requested_date = models.DateTimeField('request date')
+    estimate = models.DateField('request date')
     status = models.CharField( max_length=20,
         choices=TYPE_STATUS, default='QUEUE')
     
-    def __str__(self):
-        return self.status
+    def __int__(self):
+        return self.project_no
         
 
 class Order(models.Model):
-    order_number = models.AutoField(primary_key =True)
-    drawing_number = models.CharField(max_length=20)
-    customer_name = models.CharField(max_length=50)
-    request_type = models.ForeignKey(Request, null=True, blank=True,
+    order_id = models.AutoField(primary_key=True)
+    quantity = models.IntegerField(null=True, blank=True)
+    value = models.FloatField(null=True, blank=True)
+    delivery = models.DateField('delivery date')
+    request_r = models.ForeignKey(Request, null=True, blank=True,
         on_delete=models.SET_NULL)
 
     def __int__(self):
-        return self.order_number
+        return self.order_id

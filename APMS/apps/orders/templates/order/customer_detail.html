@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-    {{ thing.order_number }} - Detail
+    {{ thing.order_id }} - Detail
 {% endblock title %}
 
 {% block header %}
@@ -14,11 +14,11 @@
 {% endblock nav %}
 
 {% block content %}
-<div class="container">
-  <h1>Customer Name:</h1>
-  <h2>{{ thing2.customer_name }}</h2>
-  <p>Related to : {{ thing2.order_number }}</p>
-</div>
+<!--<div class="container">-->
+<!--  <h1>Customer Name:</h1>-->
+<!--  <h2>{{ thing2.customer }}</h2>-->
+<!--  <p>Related to : {{ thing2.order_id }}</p>-->
+<!--</div>-->
 {% endblock content %}
 
 {% block footer %}

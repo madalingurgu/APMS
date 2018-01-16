@@ -20,20 +20,15 @@
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Customer</th>
-        <th scope="col">Drawing number</th>
+        <!--<th scope="col">Customer</th>-->
+        <!--<th scope="col">Drawing number</th>-->
       </tr>
     </thead>
     <tbody>
-      {% for order in orders %}
+      {% for req in myrequsts %}
       <tr>
-        <td><a class="btn btn-outline-secondary btn-md" role="button"
-          href="{% url 'order_detail' slugm=order.order_number %}">
-          {{ order.order_number }}</td>
-        <td><a class="btn btn-outline-secondary btn-md" role="button"
-          href="{% url 'customer_detail' cust_name=order.customer_name %}">
-          {{ order.customer_name }}</td>
-        <td>{{ order.drawing_number }}</td>
+          <td>{{  req.project_no  }}</td>
+          <td>{{  req.description  }}</td>
       </tr>
       {% endfor %}
     </tbody>
