@@ -20,7 +20,7 @@
   <p>Drawing number: {{ thing.drawing_number }}</p>
   <p>Date posted: {{ thing.request_type.post_date }}</p>
   <a class="btn btn-outline-secondary btn-md" role="button" 
-      href="{% url 'order_edit' slugm=thing.slug %}">
+      href="{% url 'order_edit' slugm=thing.order_number %}">
       Edit  
   </a>
 </div>

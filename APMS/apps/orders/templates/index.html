@@ -20,19 +20,15 @@
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Order number</th>
         <th scope="col">Customer</th>
         <th scope="col">Drawing number</th>
       </tr>
     </thead>
     <tbody>
       {% for order in orders %}
-        {% if order.id == 0 %}
-      <tr class="{{ tr_class_succes }}">
-        {% endif %}
-        <td>{{ order.id }}</td>
+      <tr>
         <td><a class="btn btn-outline-secondary btn-md" role="button"
-          href="{% url 'order_detail' slugm=order.slug %}">
+          href="{% url 'order_detail' slugm=order.order_number %}">
           {{ order.order_number }}</td>
         <td><a class="btn btn-outline-secondary btn-md" role="button"
           href="{% url 'customer_detail' cust_name=order.customer_name %}">
