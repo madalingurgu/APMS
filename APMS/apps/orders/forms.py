@@ -5,4 +5,12 @@ from orders.models import Order, Request
 class OrderForm(ModelForm):
     class Meta:
         model = Order
-        fields = ('order_number', 'customer_name', 'drawing_number', 'request_type',)
+        labels = {
+        "order_number": "Order number"
+        }
+        fields = ('order_number',
+                  'customer_name',
+                  'drawing_number',
+                  'request_type',
+        )
+        

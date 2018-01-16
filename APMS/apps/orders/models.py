@@ -12,36 +12,36 @@ class Sample(models.Model):
 
 
 TYPE_CHOICES = ( 
-    ('A','Order'),
-    ('B','Sample'),
+    ('ORDER','Order'),
+    ('SAMPLE','Sample'),
 )
 
 TYPE_STATUS = ( 
-    ('A','Queue'),
-    ('B','Wip'),
-    ('C','Complete'),
-    ('D','Hold'),
+    ('QUEUE','Queue'),
+    ('WIP','Wip'),
+    ('COMPLETE','Complete'),
+    ('HOLD','Hold'),
 )
 class Request(models.Model):
     
-    type_of_choice = models.CharField( max_length=1,
-        choices=TYPE_CHOICES, default='A')
+    type_of_choice = models.CharField( max_length=20,
+        choices=TYPE_CHOICES, default='ORDER')
     order_by = models.CharField(max_length=50, null=True)
     post_date = models.DateTimeField('date posted')
     requested_date = models.DateTimeField('request date')
-    status = models.CharField( max_length=1,
-        choices=TYPE_STATUS, default='A')
+    status = models.CharField( max_length=20,
+        choices=TYPE_STATUS, default='QUEUE')
     
     def __str__(self):
         return self.status
         
 
 class Order(models.Model):
-    order_number = models.IntegerField(unique=True)
+    order_number = models.AutoField(primary_key =True)
     drawing_number = models.CharField(max_length=20)
     customer_name = models.CharField(max_length=50)
     slug = models.SlugField(unique=True)
-    request_type = models.ForeignKey(Request, null=True,
+    request_type = models.ForeignKey(Request, null=True, blank=True,
         on_delete=models.SET_NULL)
 
     def __str__(self):
