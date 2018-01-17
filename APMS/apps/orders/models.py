@@ -13,23 +13,23 @@ class Staff(models.Model):
     user = models.CharField(max_length=100)
 
     
-    def __int__(self):
-        return self.staff_id
+    def __str__(self):
+        return self.name
 
 ################################################################################
 TYPE_PRODUCT = ( 
-    ('BBT','bbt'),
-    ('BTY','bty'),
-    ('BLS','bls'),
-    ('BRS','brs'),
-    ('CKS','cks'),
-    ('FMI','fmi'),
-    ('GRD','grd'),
-    ('LID','lid'),
-    ('MFT','mft'),
-    ('SHR','shr'),
-    ('SPN','spn'),
-    ('TRL','trl'),
+    ('BBT','BBT'),
+    ('BTY','BTY'),
+    ('BLS','BLS'),
+    ('BRS','BRS'),
+    ('CKS','CKS'),
+    ('FMI','FMI'),
+    ('GRD','GRD'),
+    ('LID','LID'),
+    ('MFT','MFT'),
+    ('SHR','SHR'),
+    ('SPN','SPN'),
+    ('TRL','TRL'),
 )
 class Product(models.Model):
     product_id = models.AutoField(primary_key=True)
@@ -41,9 +41,9 @@ class Product(models.Model):
         on_delete=models.SET_NULL)
     technology = models.CharField(max_length=500)
 
-    
+
     def __int__(self):
-        return self.product_id
+        return self.drawing_no
 
 ################################################################################        
 class Customer(models.Model):
@@ -56,8 +56,8 @@ class Customer(models.Model):
         on_delete=models.SET_NULL)
     
     
-    def __int__(self):
-        return self.customer_id
+    def __str__(self):
+        return self.name
         
 ################################################################################
 class Order(models.Model):
@@ -97,10 +97,14 @@ class Request(models.Model):
     project_no = models.IntegerField(primary_key=True)
     r_type = models.CharField( max_length=20,
         choices=TYPE_CHOICES, default='ORDER')
+    product = models.ForeignKey(Product, null=True, blank=True,
+        on_delete=models.SET_NULL)
     description = models.CharField(max_length=255, null=True)
     customer = models.ForeignKey(Customer, null=True, blank=True,
         on_delete=models.SET_NULL)
-    order_by = models.CharField(max_length=50, null=True)
+    order_by = models.ForeignKey(Staff, null=True, blank=True,
+        on_delete=models.SET_NULL)
+    #
     post_date = models.DateTimeField('date posted')
     estimate = models.DateField('estimate date')
     status = models.CharField( max_length=20,

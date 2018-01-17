@@ -19,16 +19,17 @@
   <table class="table table-hover table-sm">
     <thead class="thead-dark">
       <tr>
-        <th scope="col">#</th>
-        <!--<th scope="col">Customer</th>-->
-        <!--<th scope="col">Drawing number</th>-->
+        <th scope="col">Project No.</th>
+        <th scope="col">Type</th>
+        <th scope="col">Product</th>
       </tr>
     </thead>
     <tbody>
       {% for req in myrequsts %}
       <tr>
           <td>{{  req.project_no  }}</td>
-          <td>{{  req.description  }}</td>
+          <td>{{  req.r_type  }}</td>
+          <td>{{  req.product.p_type  }} {{ req.product.drawing_no}}</td>
       </tr>
       {% endfor %}
     </tbody>
