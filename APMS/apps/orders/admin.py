@@ -24,11 +24,7 @@ class EngineeringAdmin(admin.ModelAdmin):
 
 class RequestAdmin(admin.ModelAdmin):
     model = Request
-    list_display = ('project_no', 'r_type', 'status', 'post_date', 
-        'estimate',
-        'order',
-        'eng',
-        )
+    list_display = ('project_no', 'r_type', 'status', 'post_date',)
     
 
 # Register your models here.

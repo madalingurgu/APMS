@@ -1,16 +1,31 @@
 from django.forms import ModelForm
+from django import forms
+from orders.models import Staff, Product, Customer, Order, Engineering, Request
 
-from orders.models import Order, Request
+class OrderForm(ModelForm):
+    class Meta:
+        model = Request
+        labels = {
+        'project_no': 'Project number',
+        'r_type': 'Type',
+        }
+        fields = ('project_no',
+                  'r_type',
+                  'product',
+                  'estimate',
+                  'status',
+        )
 
-# class OrderForm(ModelForm):
-#     class Meta:
-#         model = Order
-        # labels = {
-        # "order_id": "Order number"
-        # }
-        # fields = ('order_id',
-        #           'customer',
-        #           'drawing_number',
-        #           'request_r',
-        # )
-        
+
+    # def __init__(self, *args, **kwargs):
+    #     super(OrderForm, self).__init__(*args, **kwargs)
+    #     self.fields['estimate'].widget.attrs.update({
+    #         'class' : 'form-control'
+    #     })
+    
+        widgets = {
+            'estimate': forms.TextInput(attrs={'type': 'email', 'class': 'form-control'}),
+            'project_no': forms.TextInput(attrs={'class': 'form-control'}),
+            'r_type': forms.Select(attrs={'class': 'form-control'}),
+            'status': forms.Select(attrs={'class': 'form-control'}),
+        }

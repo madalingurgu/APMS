@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django_tables2',
     'crispy_forms',
     'django_extensions',
+    'django_filters',
 ]
 
 PROJECT_APPS = [

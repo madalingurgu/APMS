@@ -21,6 +21,7 @@
 </head>
 <body>
 <div class="container-fluid">
+    <div class="jumbotron">
     <header>
         {% block header %}
             <!-- Logo, baner, user, language, etc.. 
@@ -33,10 +34,13 @@
         {% block nav %}
         <a class="btn btn-primary btn-lg" role="button"
             href="{% url 'home' %}" role="button">Home</a>
-        <!--<a class="btn btn-primary btn-lg" role="button"-->
-        <!--    href=" url 'order_create' " role="button">Add</a>-->
+        <a class="btn btn-primary btn-lg" role="button"
+            href="{% url 'order_create' %}" role="button">Add</a>
+        <a class="btn btn-primary btn-lg" role="button"
+            href="{% url 'admin' %}" role="button">Admin</a>
         {% endblock nav %}
     </nav>
+    </div>
     
     {% block content %}{% endblock content %}
     
