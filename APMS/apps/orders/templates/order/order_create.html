@@ -14,12 +14,12 @@
 
 {% block content %}
 <div class="container">
-  <h2>New Order</h2>
-  <form role="form" action="" method="post">
+  <div class="col-md-6 align-self-center  offset-md-3">
+
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Create</button>
-  </form>
+    {% crispy form %}
+    
+  </div>
 </div>
 {% endblock content %}
 

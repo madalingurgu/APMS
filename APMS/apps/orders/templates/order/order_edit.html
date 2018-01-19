@@ -17,9 +17,7 @@
   <h2>Edit {{ thing3.project_no }}</h2>
   <form role="form" action="" method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button class="btn btn-outline-secondary btn-md" role="button" 
-      type="submit">Save</button>
+    {% crispy form %}
   </form>
 </div>
 {% endblock content %}
