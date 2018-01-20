@@ -42,8 +42,8 @@ class Product(models.Model):
     technology = models.CharField(max_length=500, null=True, blank=True)
 
 
-    def __int__(self):
-        return self.drawing_no
+    def __str__(self):
+        return str(self.p_type)+' '+str(self.drawing_no)
 
 ################################################################################        
 class Customer(models.Model):
@@ -66,8 +66,8 @@ class Order(models.Model):
     value = models.FloatField(null=True, blank=True)
 
 
-    def __int__(self):
-        return self.order_id
+    def __str__(self):
+        return 'Order'+'-'+str(self.order_id)
         
 ################################################################################        
 class Engineering(models.Model):
@@ -76,8 +76,8 @@ class Engineering(models.Model):
     instructions = models.CharField(max_length=500, null=True, blank=True)
     
     
-    def __int__(self):
-        return self.eng_id
+    def __str__(self):
+        return 'Engineering'+'-'+str(self.eng_id)
 
 ################################################################################
 TYPE_CHOICES = ( 

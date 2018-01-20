@@ -12,17 +12,33 @@ class OrderForm(forms.ModelForm):
         super(OrderForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_id = 'id-order-form'
-        self.helper.form_method = 'post'
-        self.helper.form_action = reverse('order_create')
+        # self.helper.form_method = 'post'
+        # self.helper.form_action = reverse('order_create')
         self.helper.add_input(Submit('submit', 'Save', css_class='btn-success'))
-        # self.helper.label_class = 'col-md-2'
         self.helper.layout = Layout(
-            Field('project_no', style="color: brown;", 
-                placeholder='Please input the project number!',),
-            Field('r_type', style="color: brown;",),
-            Fieldset('', 'product', 'estimate', style="color: brown;"),
-                
+            Fieldset('', 
+            Field('project_no', placeholder='Please input the project number!',),
+            'r_type',
+            'product',
+            'p_type',
+            'customer',
+            'order',
+            'eng',
+            'responsable',
+            'request_date',
+            'estimate',
+            'status',
+            'comments',
+            style="color:black;",
+            )    
             
+            
+            # self.helper.label_class = 'col-md-2'
+            # self.helper.layout = Layout(
+            # Field('project_no', style="color: brown;", 
+            #     placeholder='Please input the project number!',),
+            # Field('r_type', style="color: brown;",),
+            # Fieldset('', 'product', 'estimate', style="color: black;"),
             # HTML("""<h3>Create new customers account</h3>"""),
             # Row(Field('first_name',),),
             # Field('project_no', placeholder='Your first name', css_class="some-class")
@@ -37,11 +53,16 @@ class OrderForm(forms.ModelForm):
         fields = ('project_no',
                   'r_type',
                   'product',
+                  'customer',
+#                  'post_date',
+                  'order',
+                  'eng',
+                  'responsable',
+                  'request_date',
                   'estimate',
                   'status',
+                  'comments',
         )
         # widgets = {
         #     'project_no':TextInput(attrs={'size':'70','cols': 10, 'rows': 20}),  
         # }
-
-    

@@ -16,6 +16,16 @@
 {% block content %}
 <div class="container">
   <h2>Project number: {{ thing.project_no }}</h2>
+  <p>Type of product: {{  thing.r_type  }}</p>
+  <p>Product: {{  thing.product  }}</p>
+  <p>Customer name: {{  thing.customer  }}</p>
+  
+  
+  <p>Responsable: {{  thing.responsable  }}</p>
+  <p>Request date: {{  thing.request_date  }}</p>
+  <p>Estimate completion: {{  thing.estimate  }}</p>
+  <p>Status: {{  thing.status  }}</p>
+  <p>Comments: {{  thing.comments  }}</p>
 
   <a class="btn btn-outline-secondary btn-md" role="button" 
       href="{% url 'order_edit' pk=thing.project_no %}">

@@ -14,11 +14,11 @@
 
 {% block content %}
 <div class="container">
+  <div class="col-md-6 align-self-center  offset-md-3">
   <h2>Edit {{ thing3.project_no }}</h2>
-  <form role="form" action="" method="post">
     {% csrf_token %}
     {% crispy form %}
-  </form>
+</div>
 </div>
 {% endblock content %}
 
