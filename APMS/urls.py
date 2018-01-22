@@ -2,6 +2,7 @@ from django.views.generic.base import RedirectView
 from django.conf.urls import url, include
 from django.contrib import admin
 from orders import views
+from orders.views import staff
 
 urlpatterns = [
 ################################################################################    
@@ -22,6 +23,9 @@ urlpatterns = [
 ################################################################################         
     # url(r'^customer-detail-(?P<cust_name>[-\w]+)$',
     #     views.customer_detail, name='customer_detail'),
+
+################################################################################ 
+    url(r'^staff/', views.staff, name='staff'),
 
 ################################################################################ 
     url(r'^admin/', admin.site.urls),

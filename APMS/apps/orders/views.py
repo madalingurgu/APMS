@@ -2,12 +2,19 @@ from django.shortcuts import render, redirect, get_object_or_404
 from orders.models import Staff, Product, Customer, Order, Engineering, Request
 from orders.forms import OrderForm
 from django.utils import timezone
+from django_tables2 import RequestConfig
+from orders.tables import StaffTable
+
 
 # Create your views here.
 
 ################################################################################ 
 def index(request):
-    myrequsts = Request.objects.all()
+#    myrequsts = Request.objects.all()
+    
+
+    myrequsts = Request.objects.order_by('project_no').order_by('customer')
+    
 
     return render(request, 'index.html', {
         'myrequsts': myrequsts,
@@ -70,3 +77,13 @@ def order_create(request):
     return render(request, 'order/order_create.html', {
         'form': form,
     })
+    
+
+################################################################################
+def staff(request):
+    table = StaffTable(Staff.objects.all())
+    RequestConfig(request).configure(table)
+    
+    return render(request, 'order/staff.html', {
+            'table': table,
+        })

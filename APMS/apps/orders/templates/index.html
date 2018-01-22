@@ -9,16 +9,17 @@
   {{ block.super }}
 {% endblock header %}
 
+
 {% block nav %}
   {{ block.super }}
 {% endblock nav %}
 
 {% block content %}
 <div class="table-responsive">
-  <table class="table table-hover table-sm">
+  <table id="" class="table table-hover table-sm">
     <thead class="thead-dark">
       <tr>
-        <th scope="col">Project No.</th>
+        <th scope="col"><a a href="?order_by=project_no">Project No.</a></th>
         <th scope="col">Type</th>
         <th scope="col">Product</th>
         <th scope="col">Description</th>
