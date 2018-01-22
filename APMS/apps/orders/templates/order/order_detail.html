@@ -16,12 +16,10 @@
 {% block content %}
 <div class="container">
   <h2>Project number: {{ thing.project_no }}</h2>
-  <p>Type of product: {{  thing.r_type  }}</p>
-  <p>Product: {{  thing.product  }}</p>
-  <p>Customer name: {{  thing.customer  }}</p>
-  
-  
-  <p>Responsable: {{  thing.responsable  }}</p>
+  <p>Type of product: {{  thing.r_type  }} <i class="fas fa-user"></i></p>
+  <p>Product: {{  thing.product  }} <i class="fas fa-sort-up"></i></p>
+  <p>Customer name: {{  thing.customer  }} <i class="fas fa-plus" style="font-size:1em; color:Green"></i></p>
+  <p>Responsable: {{  thing.responsable  }} <i class="fa fa-cog fa-spin" style="font-size:24px"></i></p>
   <p>Request date: {{  thing.request_date  }}</p>
   <p>Estimate completion: {{  thing.estimate  }}</p>
   <p>Status: {{  thing.status  }}</p>
