@@ -13,7 +13,7 @@ def index(request):
 #    myrequsts = Request.objects.all()
     
 
-    myrequsts = Request.objects.order_by('project_no').order_by('customer')
+    myrequsts = Request.objects.order_by('project_no')
     
 
     return render(request, 'index.html', {

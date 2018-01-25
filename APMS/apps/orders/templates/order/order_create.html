@@ -15,8 +15,11 @@
 {% block content %}
 <div class="container">
   <div class="col-md-6 align-self-center  offset-md-3">
+  <form method="POST" class="post-form">  
     {% csrf_token %}
-    {% crispy form %}
+    {{ form.as_p }}
+          <button type="submit" class="save btn btn-success">Save</button>
+    </form>  
   </div>
 </div>
 {% endblock content %}
