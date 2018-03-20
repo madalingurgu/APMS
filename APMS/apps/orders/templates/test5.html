@@ -11,6 +11,19 @@
     </head>
     
   <body>
+      
+        
+<div ng-app="">
+  <form>
+    Check to show a header:
+    <input type="checkbox" ng-model="myVar">
+  </form>
+  <h1 ng-show="myVar">My Header</h1>
+</div>
+
+<p>The header's ng-show attribute is set to true when the checkbox is checked.</p>
+      
+      
     <h1>Hello, world!</h1>
 
 <table class="table table-hover table-sm" id="example">
@@ -497,6 +510,8 @@
 
     <script type="text/javascript" charset="utf8" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" charset="utf8" 
+        src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
     <script>
         var $;
         $(function(){

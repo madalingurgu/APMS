@@ -30,5 +30,5 @@ urlpatterns = [
 ################################################################################ 
     url(r'^admin/', admin.site.urls),
     
-    url(r'^admin$', RedirectView.as_view(url='/admin'), name='admin'),
+    # url(r'^admin$', RedirectView.as_view(url='/admin'), name='admin'),
 ]
