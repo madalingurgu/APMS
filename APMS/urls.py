@@ -1,12 +1,16 @@
 from django.views.generic.base import RedirectView
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 from orders import views
-from orders.views import staff
 
 urlpatterns = [
 ################################################################################    
     url(r'^$', views.index, name='home'),
+    
+################################################################################         
+    url(r'^orders$',
+        views.order_index, name='order_index'),
     
 ################################################################################     
     url(r'^order-detail-(?P<pk>[-\w]+)$',
@@ -20,15 +24,16 @@ urlpatterns = [
     url(r'^order-create$',
         views.order_create, name='order_create'),
 
-################################################################################         
-    # url(r'^customer-detail-(?P<cust_name>[-\w]+)$',
-    #     views.customer_detail, name='customer_detail'),
-
 ################################################################################ 
     url(r'^staff/', views.staff, name='staff'),
+    
+################################################################################ 
+    url(r'^accounts/',
+        include('registration.backends.default.urls')),
+    
+    url('accounts/', include('django.contrib.auth.urls')),
 
 ################################################################################ 
-    url(r'^admin/', admin.site.urls),
-    
-    # url(r'^admin$', RedirectView.as_view(url='/admin'), name='admin'),
+    url(r'^hardgear/', admin.site.urls),
+
 ]

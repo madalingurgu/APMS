@@ -4,43 +4,40 @@ from orders.forms import OrderForm
 from django.utils import timezone
 from django_tables2 import RequestConfig
 from orders.tables import StaffTable
+from django.contrib.auth.decorators import login_required
+from django.http import Http404
 
 
-# Create your views here.
-
-################################################################################ 
+################################################################################
+@login_required
 def index(request):
-#    myrequsts = Request.objects.all()
+
+    return render(request, 'index.html',)
     
 
-    myrequsts = Request.objects.order_by('project_no').order_by('customer')
-    
+################################################################################
+@login_required
+def order_index(request):
+    myrequsts = Request.objects.all()
 
-    return render(request, 'index.html', {
+    return render(request, 'orders/order_index.html', {
         'myrequsts': myrequsts,
         })
 
 
-################################################################################         
+################################################################################
+@login_required
 def order_detail(request, pk):
 #    thing = get_object_or_404(Order, slug=pk,)
     thing = Request.objects.get(project_no=pk)
 
-    return render(request, 'order/order_detail.html',
+    return render(request, 'orders/order_detail.html',
         {'thing': thing, }
         )
-    
-################################################################################ 
-# def customer_detail(request, cust_name):
-# #    thing2 = get_object_or_404(Customer, customer=cust_name,)
-#     thing2 = Order.objects.get(customer=cust_name)
+        
 
-#     return render(request, 'order/customer_detail.html',
-#         {'thing2': thing2, }
-#         )
-
-
-################################################################################         
+################################################################################
+@login_required
 def order_edit(request, pk):
     thing3 = Request.objects.get(project_no=pk)
     form_class = OrderForm
@@ -53,13 +50,14 @@ def order_edit(request, pk):
     else:
         form = form_class(instance=thing3)
         
-    return render(request, 'order/order_edit.html', {
+    return render(request, 'orders/order_edit.html', {
         'thing3': thing3,
         'form': form,
     })
     
 
-################################################################################ 
+################################################################################
+@login_required
 def order_create(request):
     form_class = OrderForm
     
@@ -74,16 +72,17 @@ def order_create(request):
     else:
         form = form_class()
         
-    return render(request, 'order/order_create.html', {
+    return render(request, 'orders/order_create.html', {
         'form': form,
     })
     
 
 ################################################################################
+@login_required
 def staff(request):
     table = StaffTable(Staff.objects.all())
     RequestConfig(request).configure(table)
     
-    return render(request, 'order/staff.html', {
+    return render(request, 'staff.html', {
             'table': table,
         })

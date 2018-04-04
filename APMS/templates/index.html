@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}
+    Home
+{% endblock title %}
+
+{% block header %}
+  {{ block.super }}
+{% endblock header %}
+
+
+
+{% block content %}
+<div>
+    
+        <a class="btn btn-primary btn-lg" role="button"
+            href="{% url 'home' %}" role="button">Home</a>
+        <a class="btn btn-primary btn-lg" role="button"
+            href="{% url 'order_create' %}" role="button">Add</a>
+        <a class="btn btn-primary btn-lg" role="button"
+            href="{% url 'order_index' %}" role="button">Orders</a>    
+    
+        <p>Test home.</p>
+
+        <h1>Hello, world!</h1>
+    
+    
+</div>
+{% endblock content %}
+
+{% block footer %}
+  {{ block.super }}
+{% endblock footer %}
+
+
+
+
+
+
