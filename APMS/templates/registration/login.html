@@ -1,17 +1,28 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block header %}
+  {{ block.super }}
+  
+  <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+  
+{% endblock header %}
+
+
 {% block title %}
     Login - {{ block.super }}
 {% endblock title %}
 
+
 {% block content %}
-<div class="container-fluid">
-    <h1>Login personal</h1>
-    <form role="form" action="" method="post">
+<div class="border personal rounded">
 
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Login" />
-
-    </form>
+    {% csrf_token %}
+    {% crispy form %}
+        
+    {% if form.errors %}
+        <p>Your username and password didn't match. Please try again.</p>
+    {% endif %}
 </div>
 {% endblock content %}

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% load crispy_forms_tags %}
 
 {% block title %}
@@ -8,6 +9,7 @@
 
 {% block header %}
   {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/orders/order_index.css' %}" />
 
 {% endblock header %}
 
@@ -19,7 +21,6 @@
 {% block content %}
   {{ block.super }}
 
-  
 <div class="table-responsive">
   <table id="example" class="table table-striped table-bordered">
     <thead class="thead-dark">

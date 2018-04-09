@@ -1,7 +1,9 @@
 {% load staticfiles %}
 <!doctype html>
 <html lang="en">
+    
 <head>
+    {% block head %}
         <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,24 +20,26 @@
         crossorigin="anonymous">
         
         <!-- Load static CSS -->
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
     <title>  
         {% block title %}
            Orders management
         {% endblock title %}
     </title>
     
-    
+    {% endblock head %}
 </head>
-<body>
+<body class="bg-light">
+    
+ 
+    
+<div class="container-fluid">
     
 {% if user.is_authenticated %}
     <p>User: {{ request.user.username }} - 
         <a href="{% url 'auth_logout' %}">Logout</a>
     </p>  
-{% endif %}  
-    
-<div class="container-fluid">
+{% endif %} 
     
     <header>
         {% block header %}
@@ -85,7 +89,7 @@
     <script>
         var $;
         $(function(){
-        $("#example").dataTable();
+        $("#example").dataTable()
         });
         
         $('#datepicker').datepicker({

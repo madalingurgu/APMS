@@ -4,6 +4,8 @@ from orders.models import Staff, Product, Customer, Order, Engineering, Request
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Layout, Div, Fieldset, Field
 from django.urls import reverse
+from django.contrib.auth.forms import AuthenticationForm
+from django.forms.widgets import PasswordInput, TextInput
 
 
 class OrderForm(forms.ModelForm):
@@ -12,8 +14,6 @@ class OrderForm(forms.ModelForm):
         super(OrderForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_id = 'id-order-form'
-        # self.helper.form_method = 'post'
-        # self.helper.form_action = reverse('order_create')
         self.helper.add_input(Submit('submit', 'Save', css_class='btn-success'))
         self.helper.layout = Layout(
             Fieldset('', 
@@ -30,18 +30,6 @@ class OrderForm(forms.ModelForm):
             'comments',
             style="color:black;",
             )    
-            
-            
-            # self.helper.label_class = 'col-md-2'
-            # self.helper.layout = Layout(
-            # Field('project_no', style="color: brown;", 
-            #     placeholder='Please input the project number!',),
-            # Field('r_type', style="color: brown;",),
-            # Fieldset('', 'product', 'estimate', style="color: black;"),
-            # HTML("""<h3>Create new customers account</h3>"""),
-            # Row(Field('first_name',),),
-            # Field('project_no', placeholder='Your first name', css_class="some-class")
-            # Div('last_name', title="Your last name")
             )
     class Meta:
         model = Request
@@ -61,6 +49,19 @@ class OrderForm(forms.ModelForm):
                   'status',
                   'comments',
         )
-        # widgets = {
-        #     'project_no':TextInput(attrs={'size':'70','cols': 10, 'rows': 20}),  
-        # }
+
+        
+class CustomAuthForm(AuthenticationForm):
+    
+    def __init__(self, *args, **kwargs):
+        super(CustomAuthForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_id = 'log-in-form'
+        self.helper.add_input(Submit('submit', 'Log in', css_class='btn-primary'))
+        self.helper.form_show_labels = False
+        self.helper.layout = Layout(
+            Fieldset('Please Log in', 
+            Field('username', placeholder='Username',),
+            Field('password', placeholder='Password',),
+            )
+            )

@@ -3,6 +3,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from orders import views
+from orders.forms import CustomAuthForm
 
 urlpatterns = [
 ################################################################################    
@@ -28,10 +29,16 @@ urlpatterns = [
     url(r'^staff/', views.staff, name='staff'),
     
 ################################################################################ 
-    url(r'^accounts/',
-        include('registration.backends.default.urls')),
+    # url(r'^accounts/',
+    #     include('registration.backends.default.urls')),
     
-    url('accounts/', include('django.contrib.auth.urls')),
+    # url('accounts/', include('django.contrib.auth.urls')),
+    
+    url(r'^accounts/login/$', auth_views.login, name='login', 
+        kwargs={"authentication_form":CustomAuthForm}),
+        
+    url(r'^accounts/logout',
+        include('registration.backends.default.urls')),
 
 ################################################################################ 
     url(r'^hardgear/', admin.site.urls),
